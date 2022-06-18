@@ -52,10 +52,12 @@ descCheck.oninput =  async () => {
 
 
 function setDescSize(value) {
+  document.querySelectorAll("#description-text").forEach(b => b.style.fontSize = (2*1.8)*(value/100)+"rem")
     document.querySelectorAll(".metadata-snippet-container-one-line").forEach(b => b.style.fontSize = (2*1.8)*(value/100)+"rem")
  
 }
 function setDescVisible(value) {
+  document.querySelectorAll("#description-text").forEach(b => b.style.visibility = value) 
     document.querySelectorAll(".metadata-snippet-container-one-line").forEach(b => b.style.visibility = value) 
 }
 
