@@ -6,5 +6,4 @@ Here is an exemple of how it works
 
 
 
-TODO - Typeface integration
-TODO - Subscribe BenjaminCode
+TODO - Typeface integration - Subscribe BenjaminCode
