@@ -3,7 +3,13 @@
   "description": "A tool to simplify youtube's video screenshot for youtuber",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["storage","tabs","activeTab", "scripting"],
+  "content_scripts":[
+    {
+        "matches": ["https://youtube.com/*","https://*.youtube.com/*"],
+        "js": ["youtube.js"]
+    }
+],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -18,5 +24,10 @@
     "32": "/images/get_started32.png",
     "48": "/images/get_started48.png",
     "128": "/images/get_started128.png"
+  },
+  "options_page": "empty.html",
+  "background": {
+    "service_worker": "background.js"
   }
+  
 }
