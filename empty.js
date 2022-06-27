@@ -1,10 +1,14 @@
-//go to page
-// chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
-
-
 const canvas = document.querySelector("body > canvas")
 
-
+function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+  }
 
 function drawCanvas(){ 
     chrome.storage.sync.get(['metaData',"thumbnail","title"], function(result) {
@@ -13,7 +17,7 @@ function drawCanvas(){
         const topPadding = parseInt(document.querySelector("#top").value)
         const sidePadding = parseInt(document.querySelector("#side").value)
         var img = new Image;
-        img.src = result.thumbnail;
+        img.src = "https://img.youtube.com/vi/"+result.thumbnail+"/hqdefault.jpg";
         
         img.onload = function(){
             
@@ -22,7 +26,7 @@ function drawCanvas(){
             ctx.fillStyle = "white";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "black"
-            ctx.drawImage(img,sidePadding,topPadding); // Or at whatever offset you like
+            ctx.drawImage(img,sidePadding,topPadding); 
             ctx.font = "normal 900 24px Unknown, sans-serif";
             
             const text = result.title.split(" ")
@@ -57,14 +61,16 @@ function drawCanvas(){
     });
     
 }
-// extract as new image (data-uri)
 document.querySelector("#side").oninput = drawCanvas
 
 document.querySelector("#top").oninput = drawCanvas
 
+document.querySelector('button').onclick = function click(){
+    chrome.storage.sync.get("title", function(result) {
+    downloadURI(canvas.toDataURL(),result.title+'.png')
+
+    })
+
+}
+
 drawCanvas()
-
-
-
-
-
