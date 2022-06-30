@@ -91,11 +91,10 @@ if (window.location.href.includes('yt3.ggpht.com')){
         img.onload = function(){
             
             canvas.width = img.width+textWitdh+sidePadding*2;
-            canvas.height = 100+img.height+topPadding*2;
+            canvas.height = img.height+topPadding*2;
             ctx.fillStyle = "white";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "black"
-            // draw image with circle shape clip
             ctx.save()
             ctx.beginPath()
             ctx.arc(sidePadding+img.width/2, topPadding+img.height/2, img.width/2, 0, Math.PI * 2, false)
@@ -135,7 +134,7 @@ if (window.location.href.includes('yt3.ggpht.com')){
                 ctx.fillText(line, sidePadding+img.width+10, height);
                 height+=17
             }
-            
+            console.log(lines.length*14)
             ctx.fillStyle = "black"
             ctx.lineWidth = 0.1;
             const p = new Path2D("M12.42,14A1.54,1.54,0,0,0,14,12.87l1-4.24C15.12,7.76,15,7,14,7H10l1.48-3.54A1.17,1.17,0,0,0,10.24,2a1.49,1.49,0,0,0-1.08.46L5,7H1v7ZM9.89,3.14A.48.48,0,0,1,10.24,3a.29.29,0,0,1,.23.09S9,6.61,9,6.61L8.46,8H14c0,.08-1,4.65-1,4.65a.58.58,0,0,1-.58.35H6V7.39ZM2,8H5v5H2Z")
