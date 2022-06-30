@@ -1,7 +1,6 @@
 # youtube-easy-edit
 
-This is a chrome extension to help youtuber to screen their videos.
-It also adds a button to download video's layout in png format
+This is a chrome extension that allow youtuber to easily screen a selection of comment and a youtube thumbnail. It also allow user to hide video's title or description.
 
 
 ## Here is exemples of how it works:
