@@ -6,7 +6,7 @@
   "permissions": ["storage","tabs","activeTab", "scripting"],
   "content_scripts":[
     {
-        "matches": ["https://youtube.com/*","https://*.youtube.com/*"],
+        "matches": ["https://youtube.com/*","https://*.youtube.com/*","https://www.youtube.com/watch?v=*","https://yt3.ggpht.com/*"],
         "js": ["youtube.js"]
     }
 ],
