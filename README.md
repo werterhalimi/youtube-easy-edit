@@ -16,5 +16,6 @@ Here is exemples of how it works:
 ### TODO
 
 - Typeface integration
-- Comment integration
+- Make comment integration pretty
+- Record how comments work
 - Subscribe BenjaminCode
