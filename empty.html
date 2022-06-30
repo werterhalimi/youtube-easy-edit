@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-around;
-            align-items: center;
-            background: lightgray;
-        }
-        button {
-          color: white;
-          background-color: rgb(144, 144, 199);
-          margin: 25px;
-          font-size: large;
-          border: none;
-          padding: 5px;
-          border-radius: 15px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      align-items: center;
+      background: lightgray;
+    }
+    button {
+      color: white;
+      background-color: rgb(144, 144, 199);
+      margin: 25px;
+      font-size: large;
+      border: none;
+      padding: 5px;
+      border-radius: 15px;
+    }
+    
+    #main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
+  <div id="main">
+    <button id="switch">Switch comment</button>
     <div>
-        <div>
-            <h3>Side Padding</h3>
-            <input type="range" name="sidePadding" id="side" value="30">
-        </div>
-        <div>
-            <h3>Top Padding</h3>
-            <input type="range" name="topPadding" id="top" value="60">
-        </div>
-        <button> Download</button>
+      <h3>Side Padding</h3>
+      <input type="range" name="sidePadding" id="side" value="30">
     </div>
-    <canvas></canvas>
-    
-    <script src="empty.js"></script>
-
-
+    <div>
+      <h3>Top Padding</h3>
+      <input type="range" name="topPadding" id="top" value="60">
+    </div>
+    <button id="download">Download</button>
+  </div>
+  <canvas style="visibility: visible;"></canvas>
+  <img id="preview">
+  <script src="empty.js"></script>
 
 </body>
 </html>

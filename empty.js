@@ -1,4 +1,6 @@
 const canvas = document.querySelector("body > canvas")
+const preview = document.querySelector('#preview')
+let state = 0      
 
 function downloadURI(uri, name) {
     var link = document.createElement("a");
@@ -8,15 +10,14 @@ function downloadURI(uri, name) {
     link.click();
     document.body.removeChild(link);
     delete link;
-  }
+}
 
-function drawCanvas(){ 
+function drawThumbnail(){ 
     chrome.storage.sync.get(['metaData',"thumbnail","title"], function(result) {
         var ctx = canvas.getContext('2d');  
-        
+        const img = new Image;
         const topPadding = parseInt(document.querySelector("#top").value)
         const sidePadding = parseInt(document.querySelector("#side").value)
-        var img = new Image;
         img.src = "https://img.youtube.com/vi/"+result.thumbnail+"/hqdefault.jpg";
         
         img.onload = function(){
@@ -44,11 +45,9 @@ function drawCanvas(){
             }
             lines.push(current)
             lines.push(result.metaData)
-            console.log(lines)
             let height = img.height+topPadding+24
             for (let i = 0; i < lines.length-1; i++) {
                 const line = lines[i]
-                console.log(ctx.measureText(line))
                 ctx.fillText(line, sidePadding, height);
                 height+=30
             }
@@ -61,16 +60,32 @@ function drawCanvas(){
     });
     
 }
-document.querySelector("#side").oninput = drawCanvas
 
-document.querySelector("#top").oninput = drawCanvas
 
-document.querySelector('button').onclick = function click(){
-    chrome.storage.sync.get("title", function(result) {
-    downloadURI(canvas.toDataURL(),result.title+'.png')
 
-    })
 
+document.querySelector("#side").oninput = draw
+
+document.querySelector("#top").oninput = draw
+
+document.querySelector('#switch').onclick = function(){
+    const content = document.querySelector('#switch')
+    if (state == 0){
+        state = 1
+        content.textContent = 'Switch thumbnail'
+    }else{
+        state = 0
+        content.textContent = 'Switch comment'
+    }
+    draw()
 }
 
-drawCanvas()
+document.querySelector('#download').onclick = function click(){
+    chrome.storage.sync.get("title", function(result) {
+        downloadURI(canvas.toDataURL(),result.title+'.png')
+        
+    })
+    
+}
+
+drawThumbnail()
