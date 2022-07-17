@@ -22,4 +22,5 @@ This is a chrome extension that allow youtuber to easily screen a selection of c
 
 - Typeface integration
 - Make comment integration pretty
+- Add border radius
 - Subscribe BenjaminCode
